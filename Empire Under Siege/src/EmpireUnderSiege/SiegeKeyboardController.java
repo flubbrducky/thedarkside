@@ -12,7 +12,7 @@ public class SiegeKeyboardController implements KeyListener
 	public void keyTyped(KeyEvent e) 
 	
 	{
-		if(1==1); //key == spacebar
+		//don't do sheet
 	}
 	
 	@Override
@@ -23,12 +23,12 @@ public class SiegeKeyboardController implements KeyListener
 
         if (key == KeyEvent.VK_LEFT) 
         {
-        	model.setPaddle(model.setPaddle(model.paddleX - model.paddleSpeed), model.paddleY);
+        	model.setPaddle(model.paddleX - model.paddleSpeed, model.paddleY);
         }
 
         else if (key == KeyEvent.VK_RIGHT) 
         {
-        	model.setPaddle(model.setPaddle(model.paddleX + model.paddleSpeed), model.paddleY);
+        	model.setPaddle(model.paddleX + model.paddleSpeed, model.paddleY);
         }
         
         else if (key == KeyEvent.VK_SPACE)
