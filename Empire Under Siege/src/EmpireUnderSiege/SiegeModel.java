@@ -2,21 +2,28 @@ package EmpireUnderSiege;
 
 public class SiegeModel 
 {
+	//the ball(s)
 	protected double ballX, ballY;
     protected double velocityX, velocityY;
     protected double change;
     protected int ballDiameter;
 
-    // properties of the paddle
-    protected double paddleX, paddleY;
+    // the paddle
+    protected int paddleX, paddleY;
     protected int paddleWidth, paddleHeight;
+    protected int paddleSpeed;
 
-    // properties of the panel
+    // the bricks
+    protected double brickX, brickY;
+    protected int brickHP;
+    
+    // the panel
     protected int width, height;
 
-    // properties of the game
+    // the game
     protected int hits, misses;
     protected boolean pause;
+    protected int powerup;
 
     public SiegeModel() {
         paddleX = 0;
@@ -97,6 +104,25 @@ public class SiegeModel
             misses++;
         }
 
+    }
+    
+    public void gotThePower()
+    {
+    	switch (powerup) {
+    		case 1: velocityX *= 1.5; //time warp (speeds up ball)
+    				velocityY *= 1.5;
+    			break;
+    		case 2: //do something
+    			break;
+    		case 3: //do something
+    			break;
+    		case 4: //do something
+    			break;
+    		default: //do nothing
+    			break;
+    	}
+    	
+    	powerup = 0;
     }
 
     // Lots of getters and a couple setters.
