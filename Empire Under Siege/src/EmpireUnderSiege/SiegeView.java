@@ -56,7 +56,7 @@ public class SiegeView extends JFrame
          */
         SiegePanel = new SiegePanel(model, this);
         add(SiegePanel, BorderLayout.CENTER);
-        SiegePanel.setBackground(Color.WHITE);
+        SiegePanel.setBackground(Color.BLACK);
         Dimension size = SiegePanel.getSize();
         model.setSize(size.width, size.height);
 

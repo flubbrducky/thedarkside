@@ -98,11 +98,11 @@ public class SiegeModel
             velocityY = -change;
         }
         // bounce into top wall (wall near paddle)
-        if (ballY < -ballDiameter) {
-            ballY = height;
-            velocityY = -change;
-            misses++;
+        if (ballY < 0) {
+            ballY = 0;
+            velocityY = change;
         }
+
 
     }
     
