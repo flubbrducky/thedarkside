@@ -27,13 +27,13 @@ public class SiegeModel
 
     public SiegeModel() {
         paddleX = 0;
-        paddleY = 10;
+        paddleY = 390;
         paddleWidth = 100;
-        paddleHeight = 10;
+        paddleHeight = 11;
         ballX = 10000;
         ballY = 10000;
-        ballDiameter = 10;
-        change = 3;
+        ballDiameter = 12;
+        change = 5;
         velocityX = change;
         velocityY = change;
         width = 0;
@@ -80,7 +80,13 @@ public class SiegeModel
             velocityY = change;
             hits++;
         }
-
+        //collision detection with the paddle (NOT FINISHED!!)
+        if(ballY >= (paddleY-11) && ballX >= paddleX)
+        {
+            if(ballY <= paddleY){
+            velocityY = -change;
+            }
+        }
         // detect movement into walls and bounce appropriately
         // bounce into right wall
         if (ballX > width - ballDiameter) {

@@ -29,7 +29,7 @@ public class EmpireUnderSiege
 		
 		/* start it up */
 		view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		view.setSize(400, 300);
+		view.setSize(600, 800);
 		view.setVisible(true);
 	}
 }

@@ -28,13 +28,13 @@ public class SiegePanel extends JPanel
 	 */
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		g.setColor(Color.BLUE);
+		g.setColor(Color.GRAY.brighter());
 		int x = (int) model.getPaddleX();
 		int y = (int) model.getPaddleY();
 		if (view.getFlipVertical()) {
 			y = view.translateY(y) - model.getPaddleHeight();
 		}
-		g.fillRect(x, y, model.getPaddleWidth(), model.getPaddleHeight());
+		g.fillOval(x, y, model.getPaddleWidth(), model.getPaddleHeight());
 		g.setColor(Color.RED);
 		x = (int) model.getBallX();
 		y = (int) model.getBallY();
