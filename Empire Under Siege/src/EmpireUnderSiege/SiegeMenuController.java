@@ -36,10 +36,10 @@ public class SiegeMenuController extends KeyAdapter implements ActionListener
 	 */
 	public void keyTyped(KeyEvent event) {
 		char c = event.getKeyChar();
-		if (c == 'e' || c == 'E') {
+		if (c == 'e' || c == KeyEvent.VK_ESCAPE) {
 			view.dispose();
 			System.exit(0);
-		} else if (c == 'p' || c == 'P') {
+		} else if (c == KeyEvent.VK_SPACE || c == 'p') {
 			model.setPause(! model.getPause());
 		} else if (c == 'f' || c == 'F') {
 			view.setFlipVertical(! view.getFlipVertical());
