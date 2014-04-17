@@ -13,8 +13,10 @@ public class SiegeModel {
 	protected int paddleSpeed;
 
 	// the bricks
-	protected double brickX, brickY;
+	protected int brickX, brickY;
+	protected int brickHeight, brickWidth;
 	protected int brickHP;
+	protected boolean hit;
 
 	// the panel
 	protected int width, height;
@@ -31,6 +33,10 @@ public class SiegeModel {
 		paddleHeight = 11;
 		ballX = 10000;
 		ballY = 10000;
+		brickX = 100;
+		brickY = 0;
+		brickHeight = 100;
+		brickWidth = 45;
 		ballDiameter = 12;
 		change = 7;
 		velocityX = change;
@@ -156,6 +162,21 @@ public class SiegeModel {
 
 	public int getPaddleHeight() {
 		return paddleHeight;
+	}
+
+	public int getBrickX() {
+		return brickX;
+	}
+
+	public int getBrickY() {
+		return brickY;
+	}
+	public int getBrickWidth() {
+		return brickWidth;
+	}
+
+	public int getBrickHeight() {
+		return brickHeight;
 	}
 
 	public int getWidth() {

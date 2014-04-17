@@ -2,7 +2,7 @@ package EmpireUnderSiege;
 
 import java.awt.event.*;
 
-public class SiegeMenuController extends KeyAdapter implements ActionListener
+public class SiegeMenuController extends KeyAdapter implements ActionListener,MouseListener, MouseMotionListener
 {
 	protected SiegeModel model;
 	protected SiegeView view;
@@ -44,6 +44,53 @@ public class SiegeMenuController extends KeyAdapter implements ActionListener
 		} else if (c == 'f' || c == 'F') {
 			view.setFlipVertical(! view.getFlipVertical());
 		}
+		
+		
+		else if (c == KeyEvent.VK_LEFT) {
+			view.setFlipVertical(! view.getFlipVertical());
+		}
+	}
+
+	@Override
+	public void mouseDragged(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseMoved(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
