@@ -35,7 +35,7 @@ public class SiegePanel extends JPanel {
 		if (view.getFlipVertical()) {
 			y = view.translateY(y) - model.getPaddleHeight();
 		}
-		g.fillOval(x, y, model.getPaddleWidth(), model.getPaddleHeight());
+		g.fillRect(x, y, model.getPaddleWidth(), model.getPaddleHeight());
 		g.setColor(Color.RED);
 		x = (int) model.getBallX();
 		y = (int) model.getBallY();
