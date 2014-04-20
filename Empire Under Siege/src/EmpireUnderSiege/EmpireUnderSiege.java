@@ -9,6 +9,7 @@ public class EmpireUnderSiege
 		/* create new model, view and controller */
 		SiegeModel model = new SiegeModel();
 		SiegeView view = new SiegeView(model);
+		//SiegeKeyboardController keyController = new SiegeKeyboardController(model, view);
 		SiegeMouseController mouseController = 
 				new SiegeMouseController(model, view);
 		SiegeResizeController resizeController = 

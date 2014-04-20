@@ -1,6 +1,7 @@
 package EmpireUnderSiege;
 
 import java.awt.*;
+
 import javax.swing.*;
 
 public class SiegePanel extends JPanel {
@@ -44,13 +45,30 @@ public class SiegePanel extends JPanel {
 		}
 
 		g.fillOval(x, y, model.getBallDiameter(), model.getBallDiameter());
+		
 		int brX = model.getBrickX();
 	    int brY = model.getBrickY();
+	    
 		for (int i = 0; i < 5; i++) {
 			g.setColor(Color.RED);
-			g.fillRect(brX, brY, model.getBrickHeight(),model.getBrickWidth() );
+			g.fillRect(brX, brY, 75,10 );
 			brX += 101;
-
+		}
+		brX = model.getBrickX();
+		brX -= 101;
+		brY+=20;
+		for(int i=0; i<7; i++){
+			g.setColor(Color.RED);
+			g.fillRect(brX,brY, 75, 10);
+			brX += 101;
+			}
+		brX = model.getBrickX();
+		brX -= 50;
+		brY += 20;
+		for(int i = 0; i<6; i++){
+			g.setColor(Color.RED);
+			g.fillRect(brX,brY, 75, 10);
+			brX += 101;
 		}
 
 	}

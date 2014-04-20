@@ -8,6 +8,11 @@ public class SiegeKeyboardController implements KeyListener
 	protected SiegeView view;
 	protected boolean movin;
 	
+	public SiegeKeyboardController (SiegeModel model, SiegeView view) {
+		this.model = model;
+		this.view = view;
+	}
+	
 	@Override
 	public void keyTyped(KeyEvent e) 
 	

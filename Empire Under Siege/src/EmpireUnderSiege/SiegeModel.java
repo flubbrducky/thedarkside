@@ -34,7 +34,7 @@ public class SiegeModel {
 		ballX = 10000;
 		ballY = 10000;
 		brickX = 100;
-		brickY = 0;
+		brickY = 50;
 		brickHeight = 100;
 		brickWidth = 45;
 		ballDiameter = 12;

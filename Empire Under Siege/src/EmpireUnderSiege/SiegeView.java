@@ -13,6 +13,7 @@ public class SiegeView extends JFrame
     protected JPopupMenu popupMenu;
     /* controls whether paddle appears on top of JPanel */
     protected boolean flipVertical;
+    protected  Level1 Level1;
 
     /**
      * The constructor creates the components and places them in the window.
@@ -59,6 +60,8 @@ public class SiegeView extends JFrame
         SiegePanel.setBackground(Color.BLACK);
         Dimension size = SiegePanel.getSize();
         model.setSize(size.width, size.height);
+        
+       
 
         /* SOUTH:
          * A status bar for telling us what happens.
