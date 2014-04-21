@@ -6,7 +6,11 @@ public class SiegeKeyboardController implements KeyListener
 {
 	protected SiegeModel model;
 	protected SiegeView view;
-	protected boolean movin;
+	
+	public SiegeKeyboardController(SiegeModel model, SiegeView view) {
+		this.model = model;
+		this.view = view;
+	}
 	
 	@Override
 	public void keyTyped(KeyEvent e) 
@@ -23,22 +27,22 @@ public class SiegeKeyboardController implements KeyListener
 
         if (key == KeyEvent.VK_LEFT) 
         {
-        	model.setPaddle(model.paddleX - model.paddleSpeed, model.paddleY);
+        	model.PaddleLeft();
         }
 
         else if (key == KeyEvent.VK_RIGHT) 
         {
-        	model.setPaddle(model.paddleX + model.paddleSpeed, model.paddleY);
+        	model.PaddleRight();
         }
         
         else if (key == KeyEvent.VK_SPACE)
         {
-        	model.pause = (!model.pause);
+        	model.Pause();
         }
         
         else if (key == KeyEvent.VK_UP)
         {
-        	model.gotThePower();
+        	
         }
         
 	}
@@ -47,6 +51,16 @@ public class SiegeKeyboardController implements KeyListener
 	public void keyReleased(KeyEvent e) 
 	
 	{
-		//don't do sheet
+		int key = e.getKeyCode();
+		
+		if (key == KeyEvent.VK_LEFT) 
+        {
+        	model.StopPaddle();
+        }
+
+        else if (key == KeyEvent.VK_RIGHT) 
+        {
+        	model.StopPaddle();
+        }
 	}
 }

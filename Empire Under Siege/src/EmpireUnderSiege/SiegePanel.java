@@ -1,6 +1,8 @@
 package EmpireUnderSiege;
 
 import java.awt.*;
+import java.util.ArrayList;
+
 import javax.swing.*;
 
 public class SiegePanel extends JPanel {
@@ -30,28 +32,19 @@ public class SiegePanel extends JPanel {
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		g.setColor(Color.GRAY.brighter());
-		int x = (int) model.getPaddleX();
-		int y = (int) model.getPaddleY();
-		if (view.getFlipVertical()) {
-			y = view.translateY(y) - model.getPaddleHeight();
+		
+		for(CollideableObject oh : model.GetData())
+		{
+			g.setColor(oh.color);
+			switch(oh.shape)
+			{
+			case RECTANGLE:	
+				g.fillRect(oh.X, oh.Y, oh.SizeX, oh.SizeY);
+				break;
+			case CIRCLE:
+				g.fillOval(oh.X, oh.Y, oh.SizeX, oh.SizeY);
+				break;
+			}
 		}
-		g.fillRect(x, y, model.getPaddleWidth(), model.getPaddleHeight());
-		g.setColor(Color.RED);
-		x = (int) model.getBallX();
-		y = (int) model.getBallY();
-		if (view.getFlipVertical()) {
-			y = view.translateY(y) - model.getBallDiameter();
-		}
-
-		g.fillOval(x, y, model.getBallDiameter(), model.getBallDiameter());
-		int brX = model.getBrickX();
-	    int brY = model.getBrickY();
-		for (int i = 0; i < 5; i++) {
-			g.setColor(Color.RED);
-			g.fillRect(brX, brY, model.getBrickHeight(),model.getBrickWidth() );
-			brX += 101;
-
-		}
-
 	}
 }
