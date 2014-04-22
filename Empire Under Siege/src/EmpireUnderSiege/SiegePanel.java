@@ -46,30 +46,37 @@ public class SiegePanel extends JPanel {
 
 		g.fillOval(x, y, model.getBallDiameter(), model.getBallDiameter());
 		
-		int brX = model.getBrickX();
+		int brX = model.getBrickX() - 75;
 	    int brY = model.getBrickY();
 	    
-		for (int i = 0; i < 5; i++) {
+		for (int i = 0; i < 8; i++) {
 			g.setColor(Color.RED);
-			g.fillRect(brX, brY, 75,10 );
-			brX += 101;
+			g.fillRect(brX, brY, model.brickWidth,model.brickHeight);
+			brX += 76;
 		}
 		brX = model.getBrickX();
 		brX -= 101;
 		brY+=20;
-		for(int i=0; i<7; i++){
+		for(int i=0; i<9; i++){
 			g.setColor(Color.RED);
-			g.fillRect(brX,brY, 75, 10);
-			brX += 101;
+			g.fillRect(brX,brY, model.brickWidth, model.brickHeight);
+			brX += 76;
 			}
-		brX = model.getBrickX();
-		brX -= 50;
+		brX = model.getBrickX() - 75;
 		brY += 20;
-		for(int i = 0; i<6; i++){
+		for(int i = 0; i<8; i++){
 			g.setColor(Color.RED);
-			g.fillRect(brX,brY, 75, 10);
-			brX += 101;
+			g.fillRect(brX,brY, model.brickWidth, model.brickHeight);
+			brX += 76;
 		}
+		brX = model.getBrickX();
+		brX -= 101;
+		brY+=20;
+		for(int i=0; i<9; i++){
+			g.setColor(Color.RED);
+			g.fillRect(brX,brY, model.brickWidth, model.brickHeight);
+			brX += 76;
+			}
 
 	}
 }
