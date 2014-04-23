@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class Ball extends CollideableObject
 {
-	protected final int VELOCITY = 3;
+	protected final int VELOCITY = 5;
 	protected final int SIZE = 12;
 	public Ball(int ex, int why)
 	{
