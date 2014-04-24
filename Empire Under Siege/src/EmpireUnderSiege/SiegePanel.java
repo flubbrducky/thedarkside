@@ -31,8 +31,13 @@ public class SiegePanel extends JPanel {
 	 */
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		g.setColor(Color.GRAY.brighter());
+		g.setColor(Color.WHITE);
+		Font font = new Font("Courier", Font.PLAIN, 20);
+        g.setFont(font);
+ 
+        g.drawString("Level 1", 10, 20); 
 		
+		g.setColor(Color.GRAY.brighter());
 		for(CollideableObject oh : model.GetData())
 		{
 			g.setColor(oh.color);
@@ -49,10 +54,14 @@ public class SiegePanel extends JPanel {
 		ArrayList<Brick> eBricks = model.getEnemyBricks();
 		ArrayList<Brick> fBricks = model.getFriendlyBricks();
 		Ball ball = model.getBall();
+		
 
+       
 		// draw the enemy bricks
 		for (int i = 0; i < eBricks.size(); i++)
 		  {
+			g.setColor(Color.YELLOW);
+	        g.drawString("Score: " + model.getScore(), 575, 20); 
 			g.setColor(Color.RED);
 		    Brick b = (Brick) eBricks.get(i);
 		    b.show();
@@ -60,6 +69,7 @@ public class SiegePanel extends JPanel {
 		    {
 		      ball.Vy *= -1;
 		        eBricks.remove(b);
+		        model.setScore();
 		    } else {
 		    	g.fillRect(b.x, b.y, 75, 20);
 		      }
@@ -79,6 +89,19 @@ public class SiegePanel extends JPanel {
 		    	g.fillRect(b.x, b.y, 75, 20);
 		      }
 		   }
+		
+		if (fBricks.size() == 0) {
+	        		g.setColor(Color.RED);
+	    	        g.setFont(new Font("SanSerif", Font.BOLD, 96));
+	    	        g.drawString("GAME OVER", 50, 400);
+
+		}
+		if (eBricks.size() == 0) { 
+	        	g.setColor(Color.GREEN);
+		        g.setFont(new Font("SanSerif", Font.BOLD, 96));
+		        g.drawString("YOU WIN!", 100, 400);
+		}
+		
 	 }
 	
 		

@@ -7,6 +7,7 @@ public class SiegeModel {
 	protected Paddle paddle;
 	
 	protected Ball ball;
+	static int score = 0;
 	
 	// the bricks
 
@@ -56,6 +57,14 @@ public class SiegeModel {
 	
 	public Ball getBall(){
 		return ball;
+	}
+	
+	public int getScore(){
+		return score;
+	}
+	
+	public void setScore(){
+		score += 10;
 	}
 	
 	public ArrayList<Brick> getEnemyBricks(){
