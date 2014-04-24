@@ -24,10 +24,6 @@ public class SiegeMenuController extends KeyAdapter implements ActionListener,Mo
 		if (command.equals("Exit")) {
 			view.dispose();
 			System.exit(0);
-		} else if (command.equals("Pause/Continue")) {
-			model.setPause(! model.getPause());
-		} else if (command.equals("Flip Vertically")) {
-			view.setFlipVertical(! view.getFlipVertical());
 		}
 	}
 	
@@ -36,19 +32,12 @@ public class SiegeMenuController extends KeyAdapter implements ActionListener,Mo
 	 */
 	public void keyTyped(KeyEvent event) {
 		char c = event.getKeyChar();
-		if (c == 'e' || c == KeyEvent.VK_ESCAPE) {
+		if (c == 'e' || c == KeyEvent.VK_ESCAPE) 
+		{
 			view.dispose();
 			System.exit(0);
-		} else if (c == KeyEvent.VK_SPACE || c == 'p') {
-			model.setPause(! model.getPause());
-		} else if (c == 'f' || c == 'F') {
-			view.setFlipVertical(! view.getFlipVertical());
 		}
 		
-		
-		else if (c == KeyEvent.VK_LEFT) {
-			view.setFlipVertical(! view.getFlipVertical());
-		}
 	}
 
 	@Override

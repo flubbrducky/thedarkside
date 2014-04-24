@@ -2,7 +2,7 @@ package EmpireUnderSiege;
 
 import java.awt.event.*;
 
-public class SiegeMouseController implements MouseListener, MouseMotionListener
+public class SiegeMouseController implements MouseListener
 {
 	protected SiegeModel model;
 	protected SiegeView view;
@@ -45,35 +45,13 @@ public class SiegeMouseController implements MouseListener, MouseMotionListener
 	 * clear status bar
 	 */
 	public void mouseEntered(MouseEvent event) {
-		model.setPaddle(event.getX(), event.getY());
 		view.setStatus("");
 	} // end method mouseEntered
 
 	/**
-	 * notify user that mouse is outside the panel
+	 * does nothing
 	 */
 	public void mouseExited(MouseEvent event) {
-		view.setStatus("Mouse outside playing field");
 	} // end method mouseExited
 
-
-	/*
-	 *  MouseMotionListener event handlers
-	 */
-
-	/*
-	 * position of mouse controls paddle
-	 */
-	public void mouseDragged(MouseEvent event) {
-		model.setPaddle(view.translateX(event.getX()), 
-				view.translateY(event.getY()));
-	} // end method mouseDragged
-
-	/*
-	 * position of mouse controls paddle
-	 */
-	public void mouseMoved(MouseEvent event) {
-		model.setPaddle(view.translateX(event.getX()), 
-				view.translateY(event.getY()));
-	} // end method mouseMoved
 }

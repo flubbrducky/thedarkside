@@ -12,17 +12,14 @@ public class SiegeView extends JFrame
     protected JMenu SiegeMenu;
     protected JPopupMenu popupMenu;
     /* controls whether paddle appears on top of JPanel */
-    protected boolean flipVertical;
-    protected  Level1 Level1;
 
     /**
      * The constructor creates the components and places them in the window.
      * @param model the model for this Siege game
      */
-    public SiegeView(SiegeModel model) {
+    public SiegeView(SiegeModel m) {
         super("Simple Siege Game");
-        this.model = model;
-        flipVertical = false;
+        model = m;
 
         // create the menu
 
@@ -32,10 +29,6 @@ public class SiegeView extends JFrame
         SiegeMenu = new JMenu("Menu");
         SiegeMenu.setMnemonic('M');
         menuBar.add(SiegeMenu);
-
-        JMenuItem flipVerticalItem = new JMenuItem("Flip Vertically");
-        flipVerticalItem.setMnemonic('F');
-        SiegeMenu.add(flipVerticalItem);
 
         JMenuItem pauseItem = new JMenuItem("Pause/Continue");
         pauseItem.setMnemonic('P');
@@ -48,7 +41,6 @@ public class SiegeView extends JFrame
         // create the popup menu, need new JMenuItems
 
         popupMenu = new JPopupMenu();
-        popupMenu.add(new JMenuItem("Flip Vertically"));
         popupMenu.add(new JMenuItem("Pause/Continue"));
         popupMenu.add(new JMenuItem("Exit"));
 
@@ -59,9 +51,7 @@ public class SiegeView extends JFrame
         add(SiegePanel, BorderLayout.CENTER);
         SiegePanel.setBackground(Color.BLACK);
         Dimension size = SiegePanel.getSize();
-        model.setSize(size.width, size.height);
-        
-       
+        //model.setSize(size.width, size.height);
 
         /* SOUTH:
          * A status bar for telling us what happens.
@@ -74,22 +64,21 @@ public class SiegeView extends JFrame
 
         // so the SiegePanel can listen to the keyboard
         SiegePanel.requestFocus();
+        
+        setSize(model.GetWidth(), model.GetHeight());
     }
 
     /**
      * Register event handlers with the appropriate components.
      * @param controller1 a SiegeMouseController
-     * @param controller2 a SiegeResizeController
      * @param controller3 a SiegeMenuController
      * @param controller4 a SiegePopupController
      */
-    public void registerListeners(SiegeMouseController controller1, 
-            SiegeResizeController controller2,
+    public void registerListeners(SiegeMouseController controller1, SiegeKeyboardController controller2,
             SiegeMenuController controller3,
             SiegePopupController controller4) {
         SiegePanel.addMouseListener(controller1);
-        SiegePanel.addMouseMotionListener(controller1);
-        SiegePanel.addComponentListener(controller2);
+        SiegePanel.addKeyListener(controller2);
         SiegePanel.addKeyListener(controller3);
         this.addMouseListener(controller4);
 
@@ -125,40 +114,6 @@ public class SiegeView extends JFrame
         return SiegePanel.getSize();
     }
 
-    /**
-     * Translate from mouse x to model x depending on view mode.
-     * @param x horizontal location of mouse
-     */
-    public int translateX(int x) {
-        return x;
-    }
-
-    /**
-     * Translate from mouse y to model y depending on view mode.
-     * @param y vertical location of mouse or model
-     */
-    public int translateY(int y) {
-        if (flipVertical) {
-            Dimension size = getSiegePanelSize();
-            y = size.height - y;
-        }
-        return y;
-    }
-
-    /**
-     * @return value of flipVertical
-     */
-    public boolean getFlipVertical() {
-        return flipVertical;
-    }
-
-    /**
-     * Set value of flipVertical
-     * @param b new value for flipVertical
-     */
-    public void setFlipVertical(boolean b) {
-        flipVertical = b;
-    }
 
     /**
      * Show popup menu if indicated.

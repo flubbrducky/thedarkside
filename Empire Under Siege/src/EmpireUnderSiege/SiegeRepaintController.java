@@ -22,14 +22,9 @@ public class SiegeRepaintController implements ActionListener
 	 * determine if the number of hits or misses changed,
 	 * and repaint the window.
 	 */
-	public void actionPerformed(ActionEvent event) {
-		int hits = model.getHits();
-		int misses = model.getMisses();
-		model.moveBall();
-		if (hits != model.getHits() || misses != model.getMisses()) {
-			view.setStatus(model.getHits() + " hits, " + 
-					model.getMisses() + " misses");
-		}
+	public void actionPerformed(ActionEvent event) 
+	{
+		model.moveModel();
 		view.repaint();
 	}
 }

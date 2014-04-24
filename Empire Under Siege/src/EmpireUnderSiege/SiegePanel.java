@@ -1,6 +1,7 @@
 package EmpireUnderSiege;
 
 import java.awt.*;
+import java.util.ArrayList;
 
 import javax.swing.*;
 
@@ -31,52 +32,55 @@ public class SiegePanel extends JPanel {
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		g.setColor(Color.GRAY.brighter());
-		int x = (int) model.getPaddleX();
-		int y = (int) model.getPaddleY();
-		if (view.getFlipVertical()) {
-			y = view.translateY(y) - model.getPaddleHeight();
-		}
-		g.fillRect(x, y, model.getPaddleWidth(), model.getPaddleHeight());
-		g.setColor(Color.RED);
-		x = (int) model.getBallX();
-		y = (int) model.getBallY();
-		if (view.getFlipVertical()) {
-			y = view.translateY(y) - model.getBallDiameter();
-		}
-
-		g.fillOval(x, y, model.getBallDiameter(), model.getBallDiameter());
 		
-		int brX = model.getBrickX() - 75;
-	    int brY = model.getBrickY();
-	    
-		for (int i = 0; i < 8; i++) {
-			g.setColor(Color.RED);
-			g.fillRect(brX, brY, model.brickWidth,model.brickHeight);
-			brX += 76;
-		}
-		brX = model.getBrickX();
-		brX -= 101;
-		brY+=20;
-		for(int i=0; i<9; i++){
-			g.setColor(Color.RED);
-			g.fillRect(brX,brY, model.brickWidth, model.brickHeight);
-			brX += 76;
+		for(CollideableObject oh : model.GetData())
+		{
+			g.setColor(oh.color);
+			switch(oh.shape)
+			{
+			case RECTANGLE:	
+				g.fillRect(oh.X, oh.Y, oh.SizeX, oh.SizeY);
+				break;
+			case CIRCLE:
+				g.fillOval(oh.X, oh.Y, oh.SizeX, oh.SizeY);
+				break;
 			}
-		brX = model.getBrickX() - 75;
-		brY += 20;
-		for(int i = 0; i<8; i++){
-			g.setColor(Color.RED);
-			g.fillRect(brX,brY, model.brickWidth, model.brickHeight);
-			brX += 76;
 		}
-		brX = model.getBrickX();
-		brX -= 101;
-		brY+=20;
-		for(int i=0; i<9; i++){
-			g.setColor(Color.RED);
-			g.fillRect(brX,brY, model.brickWidth, model.brickHeight);
-			brX += 76;
-			}
+		ArrayList<Brick> eBricks = model.getEnemyBricks();
+		ArrayList<Brick> fBricks = model.getFriendlyBricks();
+		Ball ball = model.getBall();
 
+		// draw the enemy bricks
+		for (int i = 0; i < eBricks.size(); i++)
+		  {
+			g.setColor(Color.RED);
+		    Brick b = (Brick) eBricks.get(i);
+		    b.show();
+		    if (b.touches(ball))
+		    {
+		      ball.Vy *= -1;
+		        eBricks.remove(b);
+		    } else {
+		    	g.fillRect(b.x, b.y, 75, 20);
+		      }
+		    }
+		  
+		g.setColor(Color.GREEN);
+		// draw the friendly bricks
+		for (int i = 0; i < fBricks.size(); i++)
+		  {
+		    Brick b = (Brick) fBricks.get(i);
+		    b.show();
+		    if (b.touches(ball))
+		    {
+		      ball.Vy *= -1;
+		        fBricks.remove(b);
+		    } else {
+		    	g.fillRect(b.x, b.y, 75, 20);
+		      }
+		   }
+	 }
+	
+		
+		
 	}
-}

@@ -1,39 +1,45 @@
 package EmpireUnderSiege;
 
-public class Brick {
+import java.awt.Rectangle;
+import java.awt.Stroke;
 
-	    //declare x & y coordinates
-	    int x,y;
+class Brick
+{
+  int x, y;
+  
+  Brick(int ex, int why)
+  {
+    this.x = ex;
+    this.y = why;
 
-	    //declare boolean to determine if brick has been hit
-	    boolean hit;
+  }
+   
+  void show()
+  {
+    Rectangle rectangle = new Rectangle(x, y, 75, 20);
+  }
 
-	    //constructor takes in x and y coordinates
-	    public Brick(int x, int y){
-
-	        this.x = x;
-	        this.y = y;
-	        hit = false;
-	    }
-
-	    //if hit returns true otherwise returns false
-	    public boolean isHit() {
-	        return hit;
-	    }
-
-	    //set if the brick is hit or not
-	    public void setHit(boolean hit) {
-	        this.hit = hit;
-	    }
-
-	    //gets x coordinate of brick
-	    public int getX() {
-	        return x;
-	    }
-
-	    //gets y coordinate of brick
-	    public int getY() {
-	        return y;
-	    }
-
-	}
+   
+  boolean touches(Ball b)
+  {
+    float p1 = x;
+    float p2 = x + 75;
+    if (((b.Y + b.SIZE) >= y) && ((b.Y + b.SIZE) <= y + 20))
+    {
+      if ((b.X >= p1) && (b.X <= p2))
+      {
+        return true;
+      }
+      else
+      {
+        return false;
+      }
+    }
+    else
+    {
+      return false;
+    }
+  
+   }
+     
+}
