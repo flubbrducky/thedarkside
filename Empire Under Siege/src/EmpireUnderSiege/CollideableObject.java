@@ -13,35 +13,30 @@ public abstract class CollideableObject {
 
 	public Impact hasCollided(CollideableObject a) {
 		if (a.shape == Shape.CIRCLE && shape == Shape.CIRCLE) {
-			// if(Math.sqrt(Math.pow((X-a.X),2) + Math.pow((Y-a.Y),2)) <= (SizeX
-			// + a.SizeX))
-			// {
 			return Impact.NONE;
-			// }
 		} else {
-			// collision with bottom of object
-			if (X + SizeX >= a.X && X + SizeX <= a.X + a.SizeX && Y >= a.Y
-					&& Y <= a.Y + a.SizeY) {
-				return Impact.YMPACT;
+			if (X + SizeX >= a.X && X <= a.X + a.SizeX) {
+				if (Y + SizeY >= a.Y && Y <= a.Y + a.SizeY) {
+					if (X + SizeX - Vx <= a.X || X - Vx >= a.X + a.SizeX) {
+						return Impact.XMPACT;
+					} else {
+						return Impact.YMPACT;
+					}
+				}
 			}
-			// collision with top of object
-			if (Y + SizeX >= a.Y && X >= a.X && X <= a.X + a.SizeX
-					&& Y + SizeX <= a.Y + a.SizeY) {
-				return Impact.YMPACT;
-			}
-
 		}
 		return Impact.NONE;
 	}
 
 	public Impact hitWall(int width, int height) {
+		
 		if (X <= 0)
 			return Impact.LEFT;
 
-		else if (X + SizeX >= width)
+		else if (X >= width -SizeX)
 			return Impact.RIGHT;
 
-		if (Y <= 0 || Y + SizeY >= height) {
+		if (Y <= 0 || Y +(SizeY*2)  >= height-(SizeY*4)) {
 			return Impact.YMPACT;
 		}
 		return Impact.NONE;

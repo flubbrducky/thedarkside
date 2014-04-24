@@ -15,7 +15,7 @@ public class Paddle extends CollideableObject
 		Vx = 0;
 		Vy = 0;
 		SizeX = 100;
-		SizeY = 11;
+		SizeY = 10;
 		color = Color.BLUE;
 	}
 	
