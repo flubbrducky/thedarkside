@@ -1,11 +1,17 @@
 package EmpireUnderSiege;
 
+import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
+
+import javax.imageio.ImageIO;
 
 public class SiegeModel {
 	
 	protected Paddle paddle;
-	
+	protected Image backgroundImage;
 	protected Ball ball;
 	static int score = 0;
 	
@@ -22,8 +28,9 @@ public class SiegeModel {
 	
 	protected ArrayList<CollideableObject> data;
 
-	public SiegeModel(int w, int h)
+	public SiegeModel(int w, int h) throws IOException 
 	{
+		backgroundImage = ImageIO.read(new File("wallpaper.jpg"));		  
 		paddle = new Paddle(w/2, h/2);
 		ball = new Ball(w/2, h/2 + 15);
 		eBricks = new ArrayList();

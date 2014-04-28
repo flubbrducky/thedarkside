@@ -1,14 +1,27 @@
 package EmpireUnderSiege;
 
 import java.awt.*;
+import java.io.File;
+
 import java.util.ArrayList;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 
 public class SiegePanel extends JPanel {
 	protected SiegeModel model;
 	protected SiegeView view;
 
+
+	  // Some code to initialize the background image.
+	  // Here, we use the constructor to load the image. This
+	  // can vary depending on the use case of the panel.
+	  
+
+
+
+
+	  
 	/**
 	 * Set up the instance variables and the focus.
 	 * 
@@ -31,7 +44,8 @@ public class SiegePanel extends JPanel {
 	 */
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		g.setColor(Color.WHITE);
+	    g.drawImage(model.backgroundImage, 0, 0, this);
+		g.setColor(Color.BLACK);
 		Font font = new Font("Courier", Font.PLAIN, 20);
         g.setFont(font);
  
@@ -44,10 +58,15 @@ public class SiegePanel extends JPanel {
 			switch(oh.shape)
 			{
 			case RECTANGLE:	
+				g.setColor(Color.GRAY.brighter());
 				g.fillRect(oh.X, oh.Y, oh.SizeX, oh.SizeY);
 				break;
 			case CIRCLE:
+				g.setColor(Color.BLUE.brighter());
+				g.fillOval(oh.X-2, oh.Y-2, oh.SizeX+3, oh.SizeY+3);
+				g.setColor(Color.RED);
 				g.fillOval(oh.X, oh.Y, oh.SizeX, oh.SizeY);
+		
 				break;
 			}
 		}
@@ -60,9 +79,9 @@ public class SiegePanel extends JPanel {
 		// draw the enemy bricks
 		for (int i = 0; i < eBricks.size(); i++)
 		  {
-			g.setColor(Color.YELLOW);
+			g.setColor(Color.BLACK);
 	        g.drawString("Score: " + model.getScore(), 575, 20); 
-			g.setColor(Color.RED);
+			g.setColor(Color.BLUE);
 		    Brick b = (Brick) eBricks.get(i);
 		    b.show();
 		    if (b.touches(ball))
@@ -75,7 +94,7 @@ public class SiegePanel extends JPanel {
 		      }
 		    }
 		  
-		g.setColor(Color.GREEN);
+		g.setColor(Color.RED);
 		// draw the friendly bricks
 		for (int i = 0; i < fBricks.size(); i++)
 		  {
@@ -91,13 +110,13 @@ public class SiegePanel extends JPanel {
 		   }
 		
 		if (fBricks.size() == 0) {
-	        		g.setColor(Color.RED);
+	        		g.setColor(Color.BLUE);
 	    	        g.setFont(new Font("SanSerif", Font.BOLD, 96));
 	    	        g.drawString("GAME OVER", 50, 400);
 
 		}
 		if (eBricks.size() == 0) { 
-	        	g.setColor(Color.GREEN);
+	        	g.setColor(Color.RED);
 		        g.setFont(new Font("SanSerif", Font.BOLD, 96));
 		        g.drawString("YOU WIN!", 100, 400);
 		}

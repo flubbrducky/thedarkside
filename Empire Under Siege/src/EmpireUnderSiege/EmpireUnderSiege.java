@@ -1,11 +1,13 @@
 package EmpireUnderSiege;
 
+import java.io.IOException;
+
 import javax.swing.*;
 
 
 public class EmpireUnderSiege 
 {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		/* create new model, view and controller */
 		SiegeModel model = new SiegeModel(700, 850);
 		

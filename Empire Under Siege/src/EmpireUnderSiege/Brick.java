@@ -29,6 +29,7 @@ class Brick
       if ((b.X >= p1) && (b.X <= p2))
       {
         return true;
+        
       }
       else
       {
