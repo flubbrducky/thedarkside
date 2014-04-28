@@ -11,17 +11,7 @@ import javax.swing.*;
 public class SiegePanel extends JPanel {
 	protected SiegeModel model;
 	protected SiegeView view;
-
-
-	  // Some code to initialize the background image.
-	  // Here, we use the constructor to load the image. This
-	  // can vary depending on the use case of the panel.
-	  
-
-
-
-
-	  
+ 
 	/**
 	 * Set up the instance variables and the focus.
 	 * 
@@ -80,7 +70,7 @@ public class SiegePanel extends JPanel {
 		for (int i = 0; i < eBricks.size(); i++)
 		  {
 			g.setColor(Color.BLACK);
-	        g.drawString("Score: " + model.getScore(), 575, 20); 
+	        g.drawString("Score:" + model.getScore(), 575, 20); 
 			g.setColor(Color.BLUE);
 		    Brick b = (Brick) eBricks.get(i);
 		    b.show();
@@ -88,7 +78,7 @@ public class SiegePanel extends JPanel {
 		    {
 		      ball.Vy *= -1;
 		        eBricks.remove(b);
-		        model.setScore();
+		        model.PlusScore();
 		    } else {
 		    	g.fillRect(b.x, b.y, 75, 20);
 		      }
@@ -104,6 +94,7 @@ public class SiegePanel extends JPanel {
 		    {
 		      ball.Vy *= -1;
 		        fBricks.remove(b);
+		        model.MinusScore();
 		    } else {
 		    	g.fillRect(b.x, b.y, 75, 20);
 		      }

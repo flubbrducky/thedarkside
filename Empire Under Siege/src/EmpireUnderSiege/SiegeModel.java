@@ -10,13 +10,12 @@ import javax.imageio.ImageIO;
 
 public class SiegeModel {
 	
-	protected Paddle paddle;
 	protected Image backgroundImage;
+	protected Paddle paddle;
 	protected Ball ball;
 	static int score = 0;
 	
 	// the bricks
-
 	ArrayList eBricks;
 	ArrayList fBricks;
 	
@@ -70,10 +69,13 @@ public class SiegeModel {
 		return score;
 	}
 	
-	public void setScore(){
+	public void PlusScore(){
 		score += 10;
 	}
 	
+	public void MinusScore(){
+		score -= 10;
+	}
 	public ArrayList<Brick> getEnemyBricks(){
 		return eBricks;
 	}
