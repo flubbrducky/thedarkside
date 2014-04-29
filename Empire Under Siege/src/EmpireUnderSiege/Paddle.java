@@ -21,13 +21,13 @@ public class Paddle extends CollideableObject
 	
 	public void move(ArrayList<CollideableObject> debris, int width, int height)
 	{
-		switch(hitWall(width, height))
+		switch(hitWall(700, height))
 		{
 		case LEFT:
 			X = 0;
 			break;
 		case RIGHT:
-			X = width - (SizeX + 1);
+			X = 700 - (SizeX + 1);
 			break;
 		}
 		
