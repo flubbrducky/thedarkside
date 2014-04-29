@@ -2,6 +2,7 @@ package EmpireUnderSiege;
 
 import java.awt.*;
 import java.awt.event.*;
+
 import javax.swing.*;
 
 public class SiegeView extends JFrame
@@ -20,7 +21,10 @@ public class SiegeView extends JFrame
     public SiegeView(SiegeModel m) {
         super("Simple Siege Game");
         model = m;
-
+        Font font = new Font("Monospaced", Font.BOLD + Font.ITALIC, 30);
+        JButton button = new JButton("TEST");
+        button.setFont(font);
+        add(button, BorderLayout.EAST);
         // create the menu
 
         JMenuBar menuBar = new JMenuBar();
@@ -62,6 +66,7 @@ public class SiegeView extends JFrame
         statusBar.setOpaque(true); // need this for setBackground to work
         add(statusBar, BorderLayout.SOUTH);
 
+                    
         // so the SiegePanel can listen to the keyboard
         SiegePanel.requestFocus();
         
