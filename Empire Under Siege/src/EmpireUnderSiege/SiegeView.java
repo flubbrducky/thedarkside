@@ -3,6 +3,7 @@ package EmpireUnderSiege;
 import java.awt.*;
 import java.awt.event.*;
 
+import javax.lang.model.element.Element;
 import javax.swing.*;
 
 public class SiegeView extends JFrame
@@ -12,7 +13,6 @@ public class SiegeView extends JFrame
     protected JLabel statusBar;
     protected JMenu SiegeMenu;
     protected JPopupMenu popupMenu;
-    protected JPanel sideMenu;
     /* controls whether paddle appears on top of JPanel */
 
     /**
@@ -23,22 +23,33 @@ public class SiegeView extends JFrame
         super("Simple Siege Game");
         model = m;
         
-        //creates a button
-        Font font = new Font("SanSerif", Font.BOLD, 10);
+        Font font = new Font("SanSerif", Font.BOLD, 20);
         JButton button = new JButton("START GAME");
         button.setFont(font);
-        button.setBounds(700,700,170,110);
+        button.setBounds(701,700,300,100);
         add(button);
         
-        //creates labels of how to play and game info
-        JLabel topSideMenu = new JLabel("Game Info", JLabel.CENTER);
-        topSideMenu.setBackground(Color.RED);
-        topSideMenu.setFont(font);
-        topSideMenu.setBounds(700,0,170,760);
-        topSideMenu.setOpaque(true);
-        add(topSideMenu);
         
+        JLabel label = new JLabel("<html><tr><td align='center'><br><br>OBJECTIVE: <br><br> " +
+        		"You must destroy all enemy bricks located above the paddle " +
+        		"while protecting your own bricks below.<html>", JLabel.CENTER);
+        label.setBounds(701,0,300,220);
+        add(label);
+        label.setBackground(Color.GRAY.brighter());
+        label.setFont(font);
+        label.setOpaque(true);
+        
+        JLabel label2 = new JLabel("<html><tr><td align='center'>HOW TO PLAY:<br><br> " +
+        		" Movement: <br>Keyboard<br>(left and right arrows)<br><br>" +
+        		" Pause game: <br>Spacebar</html>", JLabel.CENTER);
+        label2.setBounds(701,90,300,610);
+        add(label2);
+        
+        label2.setBackground(Color.GRAY.brighter());
+        label2.setFont(font);
+        label2.setOpaque(true);
         // create the menu
+
         JMenuBar menuBar = new JMenuBar();
         setJMenuBar(menuBar);
 
@@ -83,6 +94,9 @@ public class SiegeView extends JFrame
         SiegePanel.requestFocus();
         
         setSize(model.GetWidth(), model.GetHeight());
+       
+        
+        
     }
 
     /**
