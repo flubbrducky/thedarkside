@@ -12,6 +12,7 @@ public class SiegeView extends JFrame
     protected JLabel statusBar;
     protected JMenu SiegeMenu;
     protected JPopupMenu popupMenu;
+    protected JPanel sideMenu;
     /* controls whether paddle appears on top of JPanel */
 
     /**
@@ -21,12 +22,23 @@ public class SiegeView extends JFrame
     public SiegeView(SiegeModel m) {
         super("Simple Siege Game");
         model = m;
-        Font font = new Font("Monospaced", Font.BOLD + Font.ITALIC, 30);
-        JButton button = new JButton("TEST");
+        
+        //creates a button
+        Font font = new Font("SanSerif", Font.BOLD, 10);
+        JButton button = new JButton("START GAME");
         button.setFont(font);
-        add(button, BorderLayout.EAST);
+        button.setBounds(700,700,170,110);
+        add(button);
+        
+        //creates labels of how to play and game info
+        JLabel topSideMenu = new JLabel("Game Info", JLabel.CENTER);
+        topSideMenu.setBackground(Color.RED);
+        topSideMenu.setFont(font);
+        topSideMenu.setBounds(700,0,170,760);
+        topSideMenu.setOpaque(true);
+        add(topSideMenu);
+        
         // create the menu
-
         JMenuBar menuBar = new JMenuBar();
         setJMenuBar(menuBar);
 

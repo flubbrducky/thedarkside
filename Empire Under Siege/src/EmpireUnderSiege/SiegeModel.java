@@ -115,8 +115,17 @@ public class SiegeModel {
 		return height;
 	}
 	
-	public void Pause() 
+	public void Pause()  
 	{
-		pause = !pause;
+		
+			try {
+				if(!pause)
+				Thread.sleep(1000);
+				else{
+				}
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 	}
 }
