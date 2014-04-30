@@ -31,7 +31,7 @@ public class SiegeView extends JFrame
         
         
         JLabel label = new JLabel("<html><tr><td align='center'><br><br>OBJECTIVE: <br><br> " +
-        		"You must destroy all enemy bricks located above the paddle " +
+        		"You must destroy all enemy bricks located above the paddle  " +
         		"while protecting your own bricks below.<html>", JLabel.CENTER);
         label.setBounds(701,0,300,220);
         add(label);
