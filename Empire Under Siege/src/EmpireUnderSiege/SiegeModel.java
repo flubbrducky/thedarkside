@@ -8,11 +8,7 @@ public class SiegeModel {
 	
 	protected Ball ball;
 	static int score = 0;
-	
-	// the bricks
 
-	ArrayList eBricks;
-	ArrayList fBricks;
 	
 	// the panel
 	protected int width, height;
@@ -20,31 +16,34 @@ public class SiegeModel {
 	// the game
 	protected boolean pause;
 	
+	// all collideable objects
 	protected ArrayList<CollideableObject> data;
 
 	public SiegeModel(int w, int h)
 	{
 		paddle = new Paddle(w/2, h/2);
 		ball = new Ball(w/2, h/2 + 15);
-		eBricks = new ArrayList();
 		data = new ArrayList<CollideableObject>();
 		data.add(paddle);
 		data.add(ball);
 		//enemy bricks
-		for (int i = 0; i < 6; i++)
-		  {
-		    Brick e = new Brick((100*i) + 50, 30);
-		    eBricks.add(e);
-		  }
+		for (int i = 0, health = 1; i < 6; i++)
+		{
+			if (i < 3) health++;
+			else health--;
+		    Brick e = new Brick((Brick.BRICK_X * i) + 125, Brick.BRICK_OFFSET, health);
+		    data.add(e);
+		}
 		
-		fBricks = new ArrayList();
 		// friendly bricks
-		for (int i = 0; i < 6; i++)
-		  {
-		    Brick f = new Brick((100*i) + 50, 700);
-		    fBricks.add(f);
-		  }
-
+//		for (int i = 0, health = 1; i < 6; i++)
+//		{
+//			if (i < 2) health++;
+//			else health--;
+//		    Brick e = new Brick((Brick.BRICK_X * i) + 125, 850 - Brick.BRICK_OFFSET, health);
+//		    data.add(e);
+//		}
+		
 		width = w;
 		height = h;
 		pause = false;
@@ -65,14 +64,6 @@ public class SiegeModel {
 	
 	public void setScore(){
 		score += 10;
-	}
-	
-	public ArrayList<Brick> getEnemyBricks(){
-		return eBricks;
-	}
-	
-	public ArrayList<Brick> getFriendlyBricks(){
-		return fBricks;
 	}
 	
 	public void moveModel()

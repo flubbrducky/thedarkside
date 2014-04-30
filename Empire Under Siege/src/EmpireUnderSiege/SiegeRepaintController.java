@@ -24,7 +24,10 @@ public class SiegeRepaintController implements ActionListener
 	 */
 	public void actionPerformed(ActionEvent event) 
 	{
-		model.moveModel();
-		view.repaint();
+		if(!model.pause)
+		{
+			model.moveModel();
+			view.repaint();
+		}
 	}
 }

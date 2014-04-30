@@ -30,9 +30,9 @@ public class SiegeView extends JFrame
         SiegeMenu.setMnemonic('M');
         menuBar.add(SiegeMenu);
 
-        JMenuItem pauseItem = new JMenuItem("Pause/Continue");
-        pauseItem.setMnemonic('P');
-        SiegeMenu.add(pauseItem);
+//        JMenuItem pauseItem = new JMenuItem("Pause/Continue");
+//        pauseItem.setMnemonic('P');
+//        SiegeMenu.add(pauseItem);
 
         JMenuItem exitItem = new JMenuItem("Exit");
         exitItem.setMnemonic('E');
@@ -41,7 +41,6 @@ public class SiegeView extends JFrame
         // create the popup menu, need new JMenuItems
 
         popupMenu = new JPopupMenu();
-        popupMenu.add(new JMenuItem("Pause/Continue"));
         popupMenu.add(new JMenuItem("Exit"));
 
         /* CENTER:

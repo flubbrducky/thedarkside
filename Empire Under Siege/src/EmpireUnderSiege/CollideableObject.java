@@ -12,14 +12,23 @@ public abstract class CollideableObject {
 	public Color color;
 
 	public Impact hasCollided(CollideableObject a) {
-		if (a.shape == Shape.CIRCLE && shape == Shape.CIRCLE) {
+		if (a.shape == Shape.CIRCLE && shape == Shape.CIRCLE) 
+		{
 			return Impact.NONE;
-		} else {
-			if (X + SizeX >= a.X && X <= a.X + a.SizeX) {
-				if (Y + SizeY >= a.Y && Y <= a.Y + a.SizeY) {
-					if (X + SizeX - Vx <= a.X || X - Vx >= a.X + a.SizeX) {
+		} 
+		else 
+		{
+			if (X + SizeX >= a.X && X <= a.X + a.SizeX) 
+			{
+				if (Y + SizeY >= a.Y && Y <= a.Y + a.SizeY) 
+				{
+					if (X + SizeX - Vx <= a.X || X - Vx >= a.X + a.SizeX) 
+					{
 						return Impact.XMPACT;
-					} else {
+					} 
+					else 
+					
+					{
 						return Impact.YMPACT;
 					}
 				}
@@ -28,7 +37,8 @@ public abstract class CollideableObject {
 		return Impact.NONE;
 	}
 
-	public Impact hitWall(int width, int height) {
+	public Impact hitWall(int width, int height) 
+	{
 		
 		if (X <= 0)
 			return Impact.LEFT;
@@ -46,5 +56,3 @@ public abstract class CollideableObject {
 			int height);
 
 }
-// Side collision, top n bottom collision, rectangle on rectangle put in a move
-// method in 

@@ -27,7 +27,7 @@ public class Paddle extends CollideableObject
 			X = 0;
 			break;
 		case RIGHT:
-			X = width - (SizeX + 1);
+			X = width - (SizeX + 20);
 			break;
 		}
 		

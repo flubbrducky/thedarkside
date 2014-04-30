@@ -1,45 +1,45 @@
 package EmpireUnderSiege;
 
-import java.awt.Rectangle;
-import java.awt.Stroke;
+import java.awt.Color;
+import java.util.ArrayList;
 
-class Brick
+public class Brick extends CollideableObject
 {
-  int x, y;
+	public int hits;
+	public static final int BRICK_X = 75;
+	public static final int BRICK_OFFSET = 30;
+	
   
-  Brick(int ex, int why)
-  {
-    this.x = ex;
-    this.y = why;
+	public Brick(int ex, int why, int health)
+	{
+		X = ex;
+		Y = why;
+		SizeX = BRICK_X;
+		SizeY = 20;
+		Vx = 0;
+		Vy = 0;
+		shape = Shape.RECTANGLE;
+		hits = health;
+		color = getColor();
+	}
 
-  }
-   
-  void show()
-  {
-    Rectangle rectangle = new Rectangle(x, y, 75, 20);
-  }
-
-   
-  boolean touches(Ball b)
-  {
-    float p1 = x;
-    float p2 = x + 75;
-    if (((b.Y + b.SIZE) >= y) && ((b.Y + b.SIZE) <= y + 20))
-    {
-      if ((b.X >= p1) && (b.X <= p2))
-      {
-        return true;
-      }
-      else
-      {
-        return false;
-      }
-    }
-    else
-    {
-      return false;
-    }
-  
-   }
-     
+	public Color getColor()
+	{
+		switch(hits)
+		{
+		case 4:
+			return Color.RED;
+		case 3:
+			return Color.MAGENTA;
+		case 2:
+			return Color.GREEN;
+		}
+		return Color.YELLOW;
+	}
+	
+	public void move(ArrayList<CollideableObject> stuff, int width,int height)
+	{
+		//
+	}
+	
 }
