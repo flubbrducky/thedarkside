@@ -115,6 +115,10 @@ public class SiegeModel {
 		return height;
 	}
 	
+	public void endGame(){
+		data.remove(ball);
+	}
+	
 	public void Pause()  
 	{
 		

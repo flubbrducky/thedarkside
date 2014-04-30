@@ -104,12 +104,17 @@ public class SiegePanel extends JPanel {
 	        		g.setColor(Color.BLUE);
 	    	        g.setFont(new Font("SanSerif", Font.BOLD, 96));
 	    	        g.drawString("GAME OVER", 50, 400);
-
+	    	        g.setFont(new Font("SanSerif", Font.BOLD, 25));
+	    	        g.drawString("Press Escape to exit!", 200, 450);
+	    	        model.endGame();
 		}
 		if (eBricks.size() == 0) { 
 	        	g.setColor(Color.RED);
 		        g.setFont(new Font("SanSerif", Font.BOLD, 96));
 		        g.drawString("YOU WIN!", 100, 400);
+		        g.setFont(new Font("SanSerif", Font.BOLD, 25));
+    	        g.drawString("Press Escape to exit!", 200, 450);
+		        model.endGame();
 		}
 		
 	 }
