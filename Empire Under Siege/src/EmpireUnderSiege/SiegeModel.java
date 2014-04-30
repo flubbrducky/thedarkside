@@ -1,5 +1,6 @@
 package EmpireUnderSiege;
 
+import java.awt.Color;
 import java.util.ArrayList;
 
 public class SiegeModel {
@@ -7,7 +8,7 @@ public class SiegeModel {
 	protected Paddle paddle;
 	
 	protected Ball ball;
-	static int score = 0;
+	public int score = 0;
 
 	
 	// the panel
@@ -22,27 +23,27 @@ public class SiegeModel {
 	public SiegeModel(int w, int h)
 	{
 		paddle = new Paddle(w/2, h/2);
-		ball = new Ball(w/2, h/2 + 15);
+		ball = new Ball(w/2, h/2 - 15);
 		data = new ArrayList<CollideableObject>();
 		data.add(paddle);
 		data.add(ball);
 		//enemy bricks
-		for (int i = 0, health = 1; i < 6; i++)
+		for (int i = 0, health = 1; i < 5; i++)
 		{
 			if (i < 3) health++;
 			else health--;
-		    Brick e = new Brick((Brick.BRICK_X * i) + 125, Brick.BRICK_OFFSET, health);
+		    Brick e = new Brick(((Brick.BRICK_X) * i) + 160, Brick.BRICK_OFFSET, health);
 		    data.add(e);
 		}
 		
 		// friendly bricks
-//		for (int i = 0, health = 1; i < 6; i++)
-//		{
-//			if (i < 2) health++;
-//			else health--;
-//		    Brick e = new Brick((Brick.BRICK_X * i) + 125, 850 - Brick.BRICK_OFFSET, health);
-//		    data.add(e);
-//		}
+		for (int i = 0, health = 1; i < 5; i++)
+		{
+			if (i < 3) health++;
+			else health--;
+		    Brick e = new Brick(((Brick.BRICK_X) * i) + 160, 800 - Brick.BRICK_OFFSET, health);
+		    data.add(e);
+		}
 		
 		width = w;
 		height = h;
@@ -68,8 +69,25 @@ public class SiegeModel {
 	
 	public void moveModel()
 	{
-		for(CollideableObject q : data)
-		q.move(data, width, height);
+		CollideableObject q;
+		int i = 0;
+		while(i < data.size())
+		{
+			q = data.get(i);
+			if(q.color != Color.BLUE && q.color != Color.GRAY)
+			{
+//				if (q.Y < Brick.BRICK_OFFSET + 400) //if the brick is an enemy brick
+//					victory = false;
+				if (((Brick)q).hits == 0)
+				{
+					data.remove(q);
+					i++;
+					continue;
+				}
+			}
+			q.move(data, width, height);
+			i++;
+		}
 	}
 	
 	public void PaddleLeft()

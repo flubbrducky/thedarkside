@@ -50,16 +50,6 @@ public class SiegeView extends JFrame
         add(SiegePanel, BorderLayout.CENTER);
         SiegePanel.setBackground(Color.BLACK);
         Dimension size = SiegePanel.getSize();
-        //model.setSize(size.width, size.height);
-
-        /* SOUTH:
-         * A status bar for telling us what happens.
-         * Borrowed from Figure 14.15.
-         */
-        statusBar = new JLabel("The status bar is open.");
-        statusBar.setBackground(Color.RED);
-        statusBar.setOpaque(true); // need this for setBackground to work
-        add(statusBar, BorderLayout.SOUTH);
 
         // so the SiegePanel can listen to the keyboard
         SiegePanel.requestFocus();

@@ -22,12 +22,20 @@ public class Ball extends CollideableObject
 	}
 	
 	public void move(ArrayList<CollideableObject> debris, int width, int height)
-	{
+	{		
 		for(CollideableObject a : debris)
 		{
 			if (this.equals(a))
 				continue;
-			switch(hasCollided(a))
+			Impact mpt = hasCollided(a);
+			if (mpt != Impact.NONE)
+			{
+				if(a.color != Color.BLUE)
+				{
+					((Brick)a).hitBrick();
+				}
+			}
+			switch(mpt)
 			{
 			case XMPACT:
 				Vx *= -1;
@@ -41,6 +49,7 @@ public class Ball extends CollideableObject
 				break;
 			}
 		}
+		
 		switch(hitWall(width, height))
 		{
 		case LEFT:

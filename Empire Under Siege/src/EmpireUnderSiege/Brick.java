@@ -7,7 +7,7 @@ public class Brick extends CollideableObject
 {
 	public int hits;
 	public static final int BRICK_X = 75;
-	public static final int BRICK_OFFSET = 30;
+	public static final int BRICK_OFFSET = 65;
 	
   
 	public Brick(int ex, int why, int health)
@@ -40,6 +40,12 @@ public class Brick extends CollideableObject
 	public void move(ArrayList<CollideableObject> stuff, int width,int height)
 	{
 		//
+	}
+	
+	public void hitBrick()
+	{
+		hits--;
+		color = getColor();
 	}
 	
 }
