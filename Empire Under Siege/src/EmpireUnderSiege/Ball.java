@@ -7,15 +7,15 @@ import java.util.ArrayList;
 
 public class Ball extends CollideableObject
 {
-	protected final int VELOCITY = 5;
+	protected final int VELOCITY = 7;
 	protected final int SIZE = 12;
 	public Ball(int ex, int why)
 	{
 		shape = Shape.CIRCLE;
 		X = ex;
 		Y = why;
-		Vx = VELOCITY;
-		Vy = -VELOCITY;
+		Vx = -VELOCITY;
+		Vy = VELOCITY;
 		SizeX = SIZE;
 		SizeY = SIZE;
 		color = Color.GRAY;

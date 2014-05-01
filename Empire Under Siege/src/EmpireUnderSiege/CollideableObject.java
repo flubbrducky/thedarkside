@@ -43,7 +43,7 @@ public abstract class CollideableObject {
 		if (X <= 0)
 			return Impact.LEFT;
 
-		else if (X >= width -SizeX)
+		else if (X >= 700 -SizeX)
 			return Impact.RIGHT;
 
 		if (Y <= 0 || Y +(SizeY*2)  >= height-(SizeY*4)) {

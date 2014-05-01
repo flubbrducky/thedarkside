@@ -28,13 +28,13 @@ public class Brick extends CollideableObject
 		switch(hits)
 		{
 		case 4:
-			return Color.RED;
-		case 3:
-			return Color.MAGENTA;
-		case 2:
 			return Color.GREEN;
+		case 3:
+			return Color.BLUE.brighter();
+		case 2:
+			return Color.YELLOW;
 		}
-		return Color.YELLOW;
+		return Color.RED;
 	}
 	
 	public void move(ArrayList<CollideableObject> stuff, int width,int height)
