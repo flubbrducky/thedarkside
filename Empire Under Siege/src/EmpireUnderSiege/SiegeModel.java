@@ -31,13 +31,13 @@ public class SiegeModel {
 	{
 		backgroundImage = ImageIO.read(new File("wallpaper.jpg"));		  
 		paddle = new Paddle(w/2, h/2);
-		ball = new Ball(w/2, h/2 + 15);
+		ball = new Ball(w/2, h/2 - 15);
 		eBricks = new ArrayList();
 		data = new ArrayList<CollideableObject>();
 		data.add(paddle);
 		data.add(ball);
 		//enemy bricks
-		for (int i = 0; i < 6; i++)
+		for (int i = 0; i < 7; i++)
 		  {
 		    Brick e = new Brick((75*i) + 50, 30);
 		    eBricks.add(e);
@@ -45,7 +45,7 @@ public class SiegeModel {
 		
 		fBricks = new ArrayList();
 		// friendly bricks
-		for (int i = 0; i < 6; i++)
+		for (int i = 0; i < 7; i++)
 		  {
 		    Brick f = new Brick((75*i) + 50, 700);
 		    fBricks.add(f);

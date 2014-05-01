@@ -7,29 +7,41 @@ import java.util.ArrayList;
 
 import javax.swing.JPanel;
 
-public class Level2 extends JPanel{
+public class Level3 extends JPanel{
 	
 	ArrayList eBricks;
 	ArrayList fBricks;
 	
 
-public Level2(){	
+public Level3(){	
 	eBricks = new ArrayList();
 	for (int i = 0; i < 7; i++)
 	  {
 	    Brick e = new Brick((75*i) + 50, 30);
 	    eBricks.add(e);
 	  }
-	for(int i = 0; i < 8; i++){
+	for(int i = 0; i < 3; i++){
 		Brick e = new Brick((75*i)+25, 50);
 		eBricks.add(e);
 	}
-	for(int i = 0; i<7; i++){
+	for(int i = 0; i<8; i++){
 		Brick e = new Brick((75*i)+75, 70);
 		eBricks.add(e);
 	}
-	for(int i = 0; i<7; i++){
+	for(int i = 0; i<2; i++){
 		Brick e = new Brick((75*i)+50, 90);
+		eBricks.add(e);
+	}
+	for(int i = 0; i < 3; i++){
+		Brick e = new Brick((75*i)+400, 50);
+		eBricks.add(e);
+	}
+	for (int i = 0; i < 2; i++){
+		Brick e = new Brick((75*i)+450, 90);
+		eBricks.add(e);
+	}
+	for (int i = 0; i < 8; i++){
+		Brick e = new Brick((75*i)+25, 110);
 		eBricks.add(e);
 	}
 	
@@ -44,6 +56,18 @@ public Level2(){
 		Brick f = new Brick((75*i)+25, 680);
 		fBricks.add(f);
 	}
+	for(int i = 0; i < 7; i++){
+		Brick f = new Brick((75*i)+30, 660);
+		fBricks.add(f);
+	}
+	for(int i = 0; i < 3; i++){
+		Brick f = new Brick((75*i)+25, 640);
+		fBricks.add(f);
+	}
+	for(int i = 0; i < 3; i++){
+		Brick f = new Brick((75*i)+400, 640);
+		fBricks.add(f);
+	}
 }
 
 public ArrayList<Brick> getEnemyBricks(){
@@ -54,3 +78,4 @@ public ArrayList<Brick> getFriendlyBricks(){
 	return fBricks;
 }
 }
+

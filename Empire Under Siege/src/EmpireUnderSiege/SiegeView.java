@@ -19,7 +19,7 @@ public class SiegeView extends JFrame
      * The constructor creates the components and places them in the window.
      * @param model the model for this Siege game
      */
-    public SiegeView(SiegeModel m, Level2 level2) {
+    public SiegeView(SiegeModel m, Level2 level2, Level3 level3) {
         super("Simple Siege Game");
         model = m;
         
@@ -74,7 +74,7 @@ public class SiegeView extends JFrame
         /* CENTER:
          * The panel where Siege is played
          */
-        SiegePanel = new SiegePanel(model, this, level2);
+        SiegePanel = new SiegePanel(model, this, level2, level3);
         add(SiegePanel, BorderLayout.CENTER);
         SiegePanel.setBackground(Color.BLACK);
         Dimension size = SiegePanel.getSize();
