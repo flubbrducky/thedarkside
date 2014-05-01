@@ -35,32 +35,10 @@ public class SiegeModel
 		data = new ArrayList<CollideableObject>();
 		data.add(paddle);
 		data.add(ball);
-		// enemy bricks
+		// level 1
 
 
-		for (int i = 0, health = 1; i < 5; i++) 
-		{
-
-			if (i < 3)
-				health++;
-			else
-				health--;
-			Brick e = new Brick(((Brick.BRICK_X) * i) + 160,
-					Brick.BRICK_OFFSET, health);
-			data.add(e);
-		}
-
-		// friendly bricks
-		for (int i = 0, health = 1; i < 5; i++) 
-		{
-			if (i < 3)
-				health++;
-			else
-				health--;
-			Brick e = new Brick(((Brick.BRICK_X) * i) + 160,
-					800 - Brick.BRICK_OFFSET, health);
-			data.add(e);
-		}
+		
 
 		width = w;
 		height = h;
