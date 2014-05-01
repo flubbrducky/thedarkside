@@ -10,9 +10,10 @@ public class EmpireUnderSiege
 	public static void main(String[] args) throws IOException {
 		/* create new model, view and controller */
 		SiegeModel model = new SiegeModel(1010, 850);
+		Level2 level2 = new Level2();
 
 		
-		SiegeView view = new SiegeView(model);
+		SiegeView view = new SiegeView(model, level2);
 
 		
 		SiegeMouseController mouseController = 

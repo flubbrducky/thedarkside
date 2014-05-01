@@ -39,7 +39,7 @@ public class SiegeModel {
 		//enemy bricks
 		for (int i = 0; i < 6; i++)
 		  {
-		    Brick e = new Brick((100*i) + 50, 30);
+		    Brick e = new Brick((75*i) + 50, 30);
 		    eBricks.add(e);
 		  }
 		
@@ -47,7 +47,7 @@ public class SiegeModel {
 		// friendly bricks
 		for (int i = 0; i < 6; i++)
 		  {
-		    Brick f = new Brick((100*i) + 50, 700);
+		    Brick f = new Brick((75*i) + 50, 700);
 		    fBricks.add(f);
 		  }
 
