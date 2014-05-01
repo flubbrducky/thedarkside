@@ -216,7 +216,7 @@ public class SiegePanel extends JPanel {
 			        g.drawString("YOU WIN!", 100, 400);
 			        g.setFont(new Font("SanSerif", Font.BOLD, 25));
 	    	        g.drawString("Press Escape to exit!", 200, 450);
-			        model.endGame();
+			     //   model.endGame();
 			        win1 = true;
 			        win2 = true;
 			}
