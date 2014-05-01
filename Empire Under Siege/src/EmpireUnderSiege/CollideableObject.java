@@ -52,7 +52,7 @@ public abstract class CollideableObject {
 		return Impact.NONE;
 	}
 
-	public abstract void move(ArrayList<CollideableObject> stuff, int width,
+	public abstract void move(SiegeModel model, int width,
 			int height);
 
 }

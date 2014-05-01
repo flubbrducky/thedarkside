@@ -5,7 +5,8 @@ import java.util.ArrayList;
 
 public class Paddle extends CollideableObject 
 {
-	public final int SPEED = 10;
+	public static final int SPEED = 10;
+	public static final int WIDTH = 100;
 	
 	public Paddle(int ex, int why)
 	{
@@ -19,7 +20,7 @@ public class Paddle extends CollideableObject
 		color = Color.BLUE;
 	}
 	
-	public void move(ArrayList<CollideableObject> debris, int width, int height)
+	public void move(SiegeModel model, int width, int height)
 	{
 		switch(hitWall(700, height))
 		{
@@ -27,7 +28,7 @@ public class Paddle extends CollideableObject
 			X = 0;
 			break;
 		case RIGHT:
-			X = 700 - (SizeX + 20);
+			X = 700 - (SizeX + 11);
 			break;
 		}
 		

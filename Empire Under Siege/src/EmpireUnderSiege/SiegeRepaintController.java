@@ -24,10 +24,15 @@ public class SiegeRepaintController implements ActionListener
 	 */
 	public void actionPerformed(ActionEvent event) 
 	{
-		if(!model.pause)
-		{
+		if(!model.pause &&
+				model.win == model.lose) //win and lose will be equal
+		{								 //if and only if game is active
 			model.moveModel();
 			view.repaint();
+		}
+		else if(model.win != model.lose)
+		{
+			
 		}
 	}
 }

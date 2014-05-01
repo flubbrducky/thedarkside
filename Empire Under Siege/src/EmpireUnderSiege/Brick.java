@@ -37,9 +37,9 @@ public class Brick extends CollideableObject
 		return Color.RED;
 	}
 	
-	public void move(ArrayList<CollideableObject> stuff, int width,int height)
+	public void move(SiegeModel model, int width, int height)
 	{
-		//
+		//do nothin
 	}
 	
 	public void hitBrick()

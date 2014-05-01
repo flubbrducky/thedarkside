@@ -21,18 +21,22 @@ public class Ball extends CollideableObject
 		color = Color.GRAY;
 	}
 	
-	public void move(ArrayList<CollideableObject> debris, int width, int height)
+	public void move(SiegeModel model, int width, int height)
 	{		
-		for(CollideableObject a : debris)
+		for(CollideableObject a : model.data)
 		{
 			if (this.equals(a))
 				continue;
 			Impact mpt = hasCollided(a);
 			if (mpt != Impact.NONE)
 			{
-				if(a.color != Color.BLUE)
+				if(a.color != Color.BLUE) //if ball hits object other than paddle
 				{
 					((Brick)a).hitBrick();
+					if(a.Y < Brick.BRICK_OFFSET + 400)
+						model.PlusScore();
+					else
+						model.MinusScore();
 				}
 			}
 			switch(mpt)

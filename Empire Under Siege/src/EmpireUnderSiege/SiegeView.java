@@ -44,16 +44,16 @@ public class SiegeView extends JFrame {
 						+ " Movement: <br>Keyboard<br>(left and right arrows)<br><br>"
 						+ " Pause game: <br>Spacebar</html>", JLabel.CENTER);
 		label2.setBounds(701, 230, 300, 300);
-	add(label2);
+		add(label2);
 		label2.setBackground(Color.GRAY.brighter());
 		label2.setFont(font);
 		label2.setOpaque(true);
 
 		JLabel label3 = new JLabel(
 				"<html><tr><td align='center'>BRICK HEALTH:<br><br> " +
-				"- Green: Full<br>" +
-				"- Blue: Med<br>" +
-				"- Yellow: Low<br>" +
+				"- Green: 4<br>" +
+				"- Blue: 3<br>" +
+				"- Yellow: 2<br>" +
 				"- Red: KILL IT!!<br><br><br>" +
 				"PRESS SPACE TO START</html>", JLabel.CENTER);
 		label3.setBounds(701, 500, 300, 310);
@@ -80,6 +80,15 @@ public class SiegeView extends JFrame {
 		SiegeMenu.add(exitItem);
 
 		// create the popup menu, need new JMenuItems
+		
+		/* SOUTH:
+         * A status bar for telling us what happens.
+         * Borrowed from Figure 14.15.
+         */
+        statusBar = new JLabel("The status bar is open.");
+        statusBar.setBackground(Color.RED);
+        statusBar.setOpaque(true); // need this for setBackground to work
+        add(statusBar, BorderLayout.SOUTH);
 
 		popupMenu = new JPopupMenu();
 		popupMenu.add(new JMenuItem("Exit"));
