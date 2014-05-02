@@ -71,7 +71,7 @@ public class SiegeModel
 	
 	public void GameOver()
 	{
-		//put something here that works
+		System.exit(0);
 	}
 
 	public void MoveModel() 
@@ -165,7 +165,7 @@ public class SiegeModel
 				InitLvl();
 				break;
 			case 3:
-				level = null;
+				GameOver();
 				break;
 			}
 		}

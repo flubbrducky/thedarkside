@@ -42,7 +42,8 @@ public class SiegeView extends JFrame {
 		JLabel label2 = new JLabel(
 				"<html><tr><td align='center'>HOW TO PLAY:<br><br> "
 						+ " Movement: <br>Keyboard<br>(left and right arrows)<br><br>"
-						+ " Pause game: <br>Spacebar</html>", JLabel.CENTER);
+						+ " Pause game: <br>Spacebar<br><br>"
+						+ " Exit Game: <br>Escape</html>", JLabel.CENTER);
 		label2.setBounds(701, 230, 300, 300);
 		add(label2);
 		label2.setBackground(Color.GRAY.brighter());

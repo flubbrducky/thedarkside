@@ -45,6 +45,11 @@ public class SiegeKeyboardController implements KeyListener
         	model.NextLevel();
         }
         
+        else if (key == KeyEvent.VK_ESCAPE)
+        {
+        	model.GameOver();
+        }
+        
 	}
 	
 	@Override
