@@ -31,7 +31,7 @@ public class SiegePanel extends JPanel {
 	 * Draw the paddle and the ball. Pay attention to whether flipVertical is
 	 * true or not.
 	 */
-	public void paintComponent(Graphics g) 
+	public void paintComponent(Graphics g)
 	{
 		super.paintComponent(g);
 	
@@ -42,16 +42,18 @@ public class SiegePanel extends JPanel {
         g.setFont(font);
         g.setColor(Color.BLACK);
         g.drawString("Score:" + model.getScore(), 575, 20);  
-        g.drawString("Level 1", 10, 20); 
+        g.drawString("Level " + model.level.number, 10, 20); 
 		
 		g.setColor(Color.GRAY.brighter());
-		for(CollideableObject oh : model.GetData())
+		for(CollideableObject oh : model.data)
 		{
 			g.setColor(oh.color);
 			switch(oh.shape)
 			{
 			case RECTANGLE:	
 				g.fillRect(oh.X, oh.Y, oh.SizeX, oh.SizeY);
+				g.setColor(Color.BLACK);
+				g.drawRect(oh.X, oh.Y, oh.SizeX - 1, oh.SizeY - 1);
 				break;
 			case CIRCLE:
 				g.setColor(Color.RED.brighter());
@@ -63,6 +65,11 @@ public class SiegePanel extends JPanel {
 		}
 
 	 }
+	
+//	public void victory()
+//	{
+//		
+//	}
 	
 		
 		

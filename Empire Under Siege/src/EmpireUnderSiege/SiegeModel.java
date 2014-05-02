@@ -17,7 +17,7 @@ public class SiegeModel
 	protected int score;
 	protected GameStatus win;
 	protected GameStatus lose;
-	protected int level;
+	protected Level level;
 
 	// the panel
 	protected int width, height;
@@ -28,35 +28,18 @@ public class SiegeModel
 	// all collideable objects
 	protected ArrayList<CollideableObject> data;
 
-	public SiegeModel(int w, int h, int lvl) throws IOException 
+	public SiegeModel(int w, int h, Level l) throws IOException 
 	{
+		level = l;
 		backgroundImage = ImageIO.read(new File("wallpaper.jpg"));
-		paddle = new Paddle(w / 2, h / 2);
-		ball = new Ball(w / 2, h / 2 - 15);
 		data = new ArrayList<CollideableObject>();
-		data.add(paddle);
-		data.add(ball);
-		level = lvl;
 		score = 0;
 		width = w;
 		height = h;
 		pause = true;
 		win = GameStatus.ACTIVE;
 		lose = GameStatus.ACTIVE;
-		switch(level)
-		{
-		case 1:
-			new Level1(this);
-			break;
-		case 2:
-			new Level2(this);
-			break;
-		case 3:
-			new Level3(this);
-			break;
-		case 4:
-			//FUCK I'M TIRED I JUST WANT THIS TO FUCKING WORK ALREADY
-		}
+		InitLvl();
 	}
 
 	public ArrayList<CollideableObject> GetData() 
@@ -69,7 +52,7 @@ public class SiegeModel
 		return ball;
 	}
 
-	public int getScore() 
+	public int getScore()
 	{
 		return score;
 	}
@@ -141,9 +124,33 @@ public class SiegeModel
 		pause = !pause;
 	}
 	
+	public void InitLvl()
+	{
+		paddle = new Paddle(width / 2, height / 2);
+		ball = new Ball(width / 2 + level.ballStart, height / 2 - 15);
+		data.add(paddle);
+		data.add(ball);
+		for(CollideableObject brick : level.build())
+			data.add(brick);
+	}
+	
 	public void NextLevel()
 	{
-		data.remove(ball);
+		data.clear();
+		switch(level.number)
+		{
+		case 1:
+			level = new Level2();
+			InitLvl();
+			break;
+		case 2:
+			level = new Level3();
+			InitLvl();
+			break;
+		case 3:
+			level = null;
+			break;
+		}
 	}
 	
 	

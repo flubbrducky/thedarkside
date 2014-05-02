@@ -30,9 +30,9 @@ public class SiegeRepaintController implements ActionListener
 			model.moveModel();
 			view.repaint();
 		}
-		else if(model.win != model.lose)
-		{
-			
-		}
+//		else if(model.win == GameStatus.VICTORY)
+//		{
+//			view.SiegePanel.victory();
+//		}
 	}
 }

@@ -1,11 +1,15 @@
 package EmpireUnderSiege;
 
+import java.util.ArrayList;
+
 public class Level1 extends Level
 {
-
-	public Level1(SiegeModel m)
+	
+	public Level1()
 	{
-		model = m;
+		dat = new ArrayList<CollideableObject>();
+		number = 1;
+		ballStart = 0;
 		
 		//enemy bricks
 		for (int i = 0, health = 1; i < 5; i++) 
@@ -15,7 +19,7 @@ public class Level1 extends Level
 			else
 				health--;
 			
-			model.data.add(new Brick(((Brick.BRICK_X) * i) + 160,
+			dat.add(new Brick(((Brick.BRICK_X) * i) + 160,
 					Brick.BRICK_OFFSET, health));
 		}
 
@@ -27,7 +31,7 @@ public class Level1 extends Level
 			else
 				health--;
 
-			model.data.add(new Brick(((Brick.BRICK_X) * i) + 160,
+			dat.add(new Brick(((Brick.BRICK_X) * i) + 160,
 					800 - Brick.BRICK_OFFSET, health));
 		}
 	}

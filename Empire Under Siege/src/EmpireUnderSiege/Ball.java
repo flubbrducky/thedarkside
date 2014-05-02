@@ -60,7 +60,12 @@ public class Ball extends CollideableObject
 		case RIGHT:
 			Vx *= -1;
 			break;	
-		case YMPACT:
+		case TOP:
+		case BOTTOM:
+			Vy *= -1;
+			break;
+		case BOTH:
+			Vx *= -1;
 			Vy *= -1;
 			break;
 		}
