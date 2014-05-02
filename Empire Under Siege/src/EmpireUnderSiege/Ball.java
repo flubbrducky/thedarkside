@@ -3,13 +3,11 @@ package EmpireUnderSiege;
 import java.awt.Color;
 import java.util.ArrayList;
 
+
+
 public class Ball extends CollideableObject
 {
-<<<<<<< HEAD
-	protected final int VELOCITY = 6;
-=======
 	protected final int VELOCITY = 7;
->>>>>>> Brick-Remake
 	protected final int SIZE = 12;
 	public Ball(int ex, int why)
 	{

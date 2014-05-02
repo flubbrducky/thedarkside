@@ -40,12 +40,6 @@ public class SiegeKeyboardController implements KeyListener
         	model.Pause();
         }
         
-        else if (key == KeyEvent.VK_ESCAPE)
-        {
-        	System.exit(0);
-        }
-        	
-        	
         else if (key == KeyEvent.VK_UP)
         {
         	model.NextLevel();

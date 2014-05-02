@@ -53,14 +53,10 @@ public abstract class CollideableObject {
 			return Impact.LEFT;
 		}
 
-<<<<<<< HEAD
-		else if (X >= 700 -SizeX)
-=======
 		else if (X >= 700 - SizeX)
 		{
 			if(Y <= 0 || Y +(SizeY*2)  >= height - (SizeY*4))
 				return Impact.BOTH; //ball about to hit corner
->>>>>>> Brick-Remake
 			return Impact.RIGHT;
 		}
 

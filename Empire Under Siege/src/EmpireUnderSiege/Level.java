@@ -12,5 +12,4 @@ public abstract class Level
 	{
 		return dat;
 	}
-	
 }

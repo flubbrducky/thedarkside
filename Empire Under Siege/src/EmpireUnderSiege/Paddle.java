@@ -28,11 +28,7 @@ public class Paddle extends CollideableObject
 			X = 0;
 			break;
 		case RIGHT:
-<<<<<<< HEAD
-			X = 700 - (SizeX + 1);
-=======
 			X = 700 - (SizeX + 11);
->>>>>>> Brick-Remake
 			break;
 		}
 		
