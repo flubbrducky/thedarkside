@@ -14,9 +14,10 @@ public class SiegeModel
 	protected Image backgroundImage;
 	protected Paddle paddle;
 	protected Ball ball;
-	protected int score = 0;
+	protected int score;
 	protected GameStatus win;
 	protected GameStatus lose;
+	protected int level;
 
 	// the panel
 	protected int width, height;
@@ -27,7 +28,7 @@ public class SiegeModel
 	// all collideable objects
 	protected ArrayList<CollideableObject> data;
 
-	public SiegeModel(int w, int h) throws IOException 
+	public SiegeModel(int w, int h, int lvl) throws IOException 
 	{
 		backgroundImage = ImageIO.read(new File("wallpaper.jpg"));
 		paddle = new Paddle(w / 2, h / 2);
@@ -35,16 +36,27 @@ public class SiegeModel
 		data = new ArrayList<CollideableObject>();
 		data.add(paddle);
 		data.add(ball);
-		// level 1
-
-
-		
-
+		level = lvl;
+		score = 0;
 		width = w;
 		height = h;
 		pause = true;
 		win = GameStatus.ACTIVE;
 		lose = GameStatus.ACTIVE;
+		switch(level)
+		{
+		case 1:
+			new Level1(this);
+			break;
+		case 2:
+			new Level2(this);
+			break;
+		case 3:
+			new Level3(this);
+			break;
+		case 4:
+			//FUCK I'M TIRED I JUST WANT THIS TO FUCKING WORK ALREADY
+		}
 	}
 
 	public ArrayList<CollideableObject> GetData() 
@@ -128,4 +140,11 @@ public class SiegeModel
 	{
 		pause = !pause;
 	}
+	
+	public void NextLevel()
+	{
+		data.remove(ball);
+	}
+	
+	
 }
