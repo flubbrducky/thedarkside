@@ -9,10 +9,14 @@ public class EmpireUnderSiege
 {
 	public static void main(String[] args) throws IOException {
 		/* create new model, view and controller */
+<<<<<<< HEAD
 		SiegeModel model = new SiegeModel(1010, 850);
 		
 		Level2 level2 = new Level2();
 		Level3 level3 = new Level3();
+=======
+		SiegeModel model = new SiegeModel(1000, 850, new Level3());
+>>>>>>> Brick-Remake
 		
 		SiegeView view = new SiegeView(model, level2, level3);
 

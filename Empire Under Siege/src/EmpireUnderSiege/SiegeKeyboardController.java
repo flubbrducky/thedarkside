@@ -16,7 +16,7 @@ public class SiegeKeyboardController implements KeyListener
 	public void keyTyped(KeyEvent e) 
 	
 	{
-		//don't do sheet
+		//don't do anything
 	}
 	
 	@Override
@@ -48,7 +48,12 @@ public class SiegeKeyboardController implements KeyListener
         	
         else if (key == KeyEvent.VK_UP)
         {
-        	
+        	model.NextLevel();
+        }
+        
+        else if (key == KeyEvent.VK_ESCAPE)
+        {
+        	model.GameOver();
         }
         
 	}

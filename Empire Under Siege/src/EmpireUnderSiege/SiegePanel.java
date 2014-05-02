@@ -2,7 +2,10 @@ package EmpireUnderSiege;
 
 import java.awt.*;
 import java.io.File;
+<<<<<<< HEAD
 
+=======
+>>>>>>> Brick-Remake
 import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
@@ -38,18 +41,29 @@ public class SiegePanel extends JPanel {
 	 * Draw the paddle and the ball. Pay attention to whether flipVertical is
 	 * true or not.
 	 */
+<<<<<<< HEAD
 	public void paintComponent(Graphics g) {
 		if (win != true){
 		super.paintComponent(g);
 	    g.drawImage(model.backgroundImage, 0, 0, this);
 		g.setColor(Color.BLACK);
+=======
+	public void paintComponent(Graphics g)
+	{
+		super.paintComponent(g);
+	
+		
+		g.drawImage(model.backgroundImage, 0, 0, this);
+		g.setColor(Color.WHITE);
+>>>>>>> Brick-Remake
 		Font font = new Font("Courier", Font.PLAIN, 20);
         g.setFont(font);
- 
-        g.drawString("Level 1", 10, 20); 
+        g.setColor(Color.BLACK);
+        g.drawString("Score:" + model.getScore(), 575, 20);  
+        g.drawString("Level " + model.level.number, 10, 20); 
 		
 		g.setColor(Color.GRAY.brighter());
-		for(CollideableObject oh : model.GetData())
+		for(CollideableObject oh : model.data)
 		{
 			g.setColor(oh.color);
 			switch(oh.shape)
@@ -57,20 +71,26 @@ public class SiegePanel extends JPanel {
 			case RECTANGLE:	
 				g.setColor(Color.GRAY.brighter());
 				g.fillRect(oh.X, oh.Y, oh.SizeX, oh.SizeY);
+				g.setColor(Color.BLACK);
+				g.drawRect(oh.X, oh.Y, oh.SizeX - 1, oh.SizeY - 1);
 				break;
 			case CIRCLE:
+<<<<<<< HEAD
 				g.setColor(Color.BLUE.brighter());
 				g.fillOval(oh.X-2, oh.Y-2, oh.SizeX+3, oh.SizeY+3);
 				g.setColor(Color.RED);
+=======
+				g.setColor(Color.RED.brighter());
+				g.fillOval(oh.X-2, oh.Y-2, oh.SizeX+3, oh.SizeY+3);
+				g.setColor(Color.WHITE);
+>>>>>>> Brick-Remake
 				g.fillOval(oh.X, oh.Y, oh.SizeX, oh.SizeY);
 		
 				break;
 			}
 		}
-		ArrayList<Brick> eBricks = model.getEnemyBricks();
-		ArrayList<Brick> fBricks = model.getFriendlyBricks();
-		Ball ball = model.getBall();
 		
+<<<<<<< HEAD
 
        
 		// draw the enemy bricks
@@ -307,10 +327,36 @@ public class SiegePanel extends JPanel {
 			        g.setFont(new Font("SanSerif", Font.BOLD, 25));
 	    	        g.drawString("Press Escape to exit!", 200, 450);
 			        model.endGame();
+=======
+		if(model.lose == GameStatus.DEFEAT)
+		{
+			g.setColor(Color.RED);
+			g.setFont(new Font("SanSerif", Font.BOLD, 96));
+	        g.drawString("GAME OVER", 50, 400);
+	        g.setFont(new Font("SanSerif", Font.BOLD, 25));
+	        g.drawString("Press Up-Arrow to start over!", 200, 450);
+		}
+		
+		else if(model.win == GameStatus.VICTORY)
+		{
+			if(model.level.number == 3)
+			{
+				g.setColor(Color.RED);
+				g.setFont(new Font("SanSerif", Font.BOLD, 96));
+		        g.drawString("YOU WIN!", 100, 400);
+		        g.setFont(new Font("SanSerif", Font.BOLD, 25));
+		        g.drawString("Press Escape to exit!", 200, 450);
+			}
+			else
+			{
+				g.setColor(Color.RED);
+				g.setFont(new Font("SanSerif", Font.BOLD, 96));
+		        g.drawString("YOU WIN!", 100, 400);
+		        g.setFont(new Font("SanSerif", Font.BOLD, 25));
+		        g.drawString("Press Up-Arrow to Start Next Level!", 200, 450);
+>>>>>>> Brick-Remake
 			}
 		}
 	 }
-	
 		
-		
-	}
+}
