@@ -37,6 +37,8 @@ public class SiegeModel
 		width = w;
 		height = h;
 		pause = true;
+		paddle = new Paddle(width / 2, height / 2);
+		ball = new Ball(width / 2 + level.ballStart, height / 2 - 15);
 		win = GameStatus.ACTIVE;
 		lose = GameStatus.ACTIVE;
 		InitLvl();
@@ -66,31 +68,41 @@ public class SiegeModel
 	{
 		score -= 10;
 	}
-
-	public void moveModel() 
+	
+	public void GameOver()
 	{
-		CollideableObject q;
-		int i = 0;
-		win = GameStatus.VICTORY;
-		lose = GameStatus.DEFEAT;
-		while (i < data.size()) 
+		//put something here that works
+	}
+
+	public void MoveModel() 
+	{
+		if(win == GameStatus.VICTORY || lose == GameStatus.DEFEAT)
+			pause = true;
+		if(!pause)
 		{
-			q = data.get(i);
-			if (q.color != Color.BLUE && q.color != Color.GRAY) //if q is a brick
+			CollideableObject q;
+			int i = 0;
+			win = GameStatus.VICTORY;
+			lose = GameStatus.DEFEAT;
+			while (i < data.size()) 
 			{
-				if (q.Y < Brick.BRICK_OFFSET + 400) //q is an enemy brick
-					 win = GameStatus.ACTIVE;
-				else 								//q is a friendly brick
-					lose = GameStatus.ACTIVE;
-				if (((Brick) q).hits == 0) //removes bricks without throwing NullPointerException
+				q = data.get(i);
+				if (q.color != Color.BLUE && q.color != Color.GRAY) //if q is a brick
 				{
-					data.remove(q);
-					i++;
-					continue;
+					if (q.Y < Brick.BRICK_OFFSET + 400) //q is an enemy brick
+						 win = GameStatus.ACTIVE;
+					else 								//q is a friendly brick
+						lose = GameStatus.ACTIVE;
+					if (((Brick) q).hits == 0) //removes bricks without throwing NullPointerException
+					{
+						data.remove(q);
+						i++;
+						continue;
+					}
 				}
+				q.move(this, width, height);
+				i++;
 			}
-			q.move(this, width, height);
-			i++;
 		}
 	}
 
@@ -126,6 +138,9 @@ public class SiegeModel
 	
 	public void InitLvl()
 	{
+		pause = true;
+		win = GameStatus.ACTIVE;
+		lose = GameStatus.ACTIVE;
 		paddle = new Paddle(width / 2, height / 2);
 		ball = new Ball(width / 2 + level.ballStart, height / 2 - 15);
 		data.add(paddle);
@@ -136,20 +151,43 @@ public class SiegeModel
 	
 	public void NextLevel()
 	{
-		data.clear();
-		switch(level.number)
+		if(win == GameStatus.VICTORY)
 		{
-		case 1:
-			level = new Level2();
-			InitLvl();
-			break;
-		case 2:
-			level = new Level3();
-			InitLvl();
-			break;
-		case 3:
-			level = null;
-			break;
+			data.clear();
+			switch(level.number)
+			{
+			case 1:
+				level = new Level2();
+				InitLvl();
+				break;
+			case 2:
+				level = new Level3();
+				InitLvl();
+				break;
+			case 3:
+				level = null;
+				break;
+			}
+		}
+		else if(lose == GameStatus.DEFEAT)
+		{
+			data.clear();
+			score = 0;
+			switch(level.number)
+			{
+			case 1:
+				level = new Level1();
+				InitLvl();
+				break;
+			case 2:
+				level = new Level2();
+				InitLvl();
+				break;
+			case 3:
+				level = new Level3();
+				InitLvl();
+				break;
+			}
 		}
 	}
 	
